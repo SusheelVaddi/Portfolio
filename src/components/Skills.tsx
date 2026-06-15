@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Shield, FileCode, Edit2, Coffee, GitBranch, Cpu } from 'lucide-react';
+import { Terminal, Shield, FileCode, Edit2, Coffee, GitBranch, Cpu, Trophy, Compass, Film, Gamepad2, Moon } from 'lucide-react';
 
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -58,6 +58,34 @@ const SKILLS_LIST = [
     name: 'AI Tools',
     icon: Cpu,
     desc: 'Agent models, developer systems integration, advanced prompting.'
+  }
+];
+
+const PERSONAL_SKILLS_LIST = [
+  {
+    name: 'Cricket',
+    icon: Trophy,
+    desc: 'Passionate about active team sports, cricket strategy, and matches.'
+  },
+  {
+    name: 'Travelling',
+    icon: Compass,
+    desc: 'Exploring new destinations, local cultures, and outdoor geography.'
+  },
+  {
+    name: 'Watching Movies & Series',
+    icon: Film,
+    desc: 'Appreciating cinematography, creative storytelling, and video production.'
+  },
+  {
+    name: 'Playing Games',
+    icon: Gamepad2,
+    desc: 'Enjoys competitive e-sports, logical gaming, and strategic mechanics.'
+  },
+  {
+    name: 'Sleeping',
+    icon: Moon,
+    desc: 'Valuing quality rest and health recovery to maintain developer concentration.'
   }
 ];
 
@@ -150,6 +178,79 @@ export default function Skills() {
                   </h3>
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-gray)', lineHeight: 1.5 }}>
                     {skill.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Personal Interests Heading */}
+        <div style={{ marginTop: '68px', marginBottom: '40px', textAlign: 'left' }}>
+          <span style={{
+            fontSize: '0.875rem',
+            color: 'var(--text-white)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.15em',
+            fontWeight: 600,
+            display: 'block',
+            marginBottom: '8px'
+          }}>
+            Lifestyle
+          </span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
+            Personal <span className="gradient-text">Interests</span>
+          </h2>
+        </div>
+
+        {/* Personal Skills Grid */}
+        <motion.div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+            gap: '16px'
+          }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {PERSONAL_SKILLS_LIST.map((interest) => {
+            const Icon = interest.icon;
+
+            return (
+              <motion.div
+                key={interest.name}
+                className="glass-panel skills-card"
+                variants={itemVariants}
+                style={{
+                  padding: '24px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '16px'
+                }}
+              >
+                <div style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '6px',
+                  backgroundColor: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-secondary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-white)',
+                  flexShrink: 0
+                }}>
+                  <Icon size={18} />
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-white)' }}>
+                    {interest.name}
+                  </h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-gray)', lineHeight: 1.5 }}>
+                    {interest.desc}
                   </p>
                 </div>
               </motion.div>
