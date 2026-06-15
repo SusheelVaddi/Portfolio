@@ -1,38 +1,36 @@
 import { useEffect, useRef } from 'react';
-import { useTheme } from './ThemeContext';
 
-interface Particle {
+interface TextParticle {
   x: number;
   y: number;
+  text: string;
   vx: number;
   vy: number;
-  radius: number;
+  alpha: number;
+  size: number;
 }
+
+const TECH_WORDS = [
+  'C',
+  'Python',
+  'HTML',
+  'CSS',
+  'Java',
+  'Git',
+  'GitHub',
+  'AI Tools',
+  '01',
+  'IoT',
+  'TypeScript',
+  'MediScan',
+  'React',
+  'Canvas',
+  'Matrix'
+];
 
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0, isPresent: false });
-  const { resolvedTheme } = useTheme();
-
-  // Dynamic colors reference based on active theme
-  const colorsRef = useRef({
-    particle: 'rgba(255, 255, 255, 0.2)',
-    line: '255, 255, 255'
-  });
-
-  useEffect(() => {
-    if (resolvedTheme === 'light') {
-      colorsRef.current = {
-        particle: 'rgba(0, 0, 0, 0.15)',
-        line: '0, 0, 0'
-      };
-    } else {
-      colorsRef.current = {
-        particle: 'rgba(255, 255, 255, 0.2)',
-        line: '255, 255, 255'
-      };
-    }
-  }, [resolvedTheme]);
+  const lastMousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -42,106 +40,95 @@ export default function ParticleBackground() {
     if (!ctx) return;
 
     let animationId: number;
-    let particles: Particle[] = [];
-    const maxParticles = 65;
-    const connectionDistance = 100;
+    let particles: TextParticle[] = [];
+    const maxParticles = 100;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      initParticles();
     };
 
-    const initParticles = () => {
-      particles = [];
-      for (let i = 0; i < maxParticles; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 1.5 + 0.5
-        });
+    const spawnParticle = (x: number, y: number) => {
+      if (particles.length >= maxParticles) {
+        particles.shift();
       }
+      const randomWord = TECH_WORDS[Math.floor(Math.random() * TECH_WORDS.length)];
+      particles.push({
+        x,
+        y,
+        text: randomWord,
+        vx: (Math.random() - 0.5) * 1.0,
+        vy: -Math.random() * 1.5 - 0.4, // drift upward
+        alpha: 1.0,
+        size: Math.floor(Math.random() * 6) + 12 // size between 12px and 18px
+      });
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = colorsRef.current.particle;
+
+      // Check current theme explicitly from HTML data attribute
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
+        p.alpha -= 0.007; // smooth fade-out rate
 
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        if (p.alpha <= 0) return;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.font = `800 ${p.size}px var(--font-heading)`;
+        
+        // Base alpha configuration to prevent visual clutter
+        const baseAlpha = isLight ? 0.15 : 0.2;
+        ctx.fillStyle = isLight
+          ? `rgba(0, 0, 0, ${p.alpha * baseAlpha})`
+          : `rgba(255, 255, 255, ${p.alpha * baseAlpha})`;
+
+        ctx.fillText(p.text, p.x, p.y);
       });
 
-      for (let i = 0; i < particles.length; i++) {
-        const p1 = particles[i];
-
-        if (mouseRef.current.isPresent) {
-          const dx = p1.x - mouseRef.current.x;
-          const dy = p1.y - mouseRef.current.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.15;
-            ctx.strokeStyle = `rgba(${colorsRef.current.line}, ${alpha})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
-            ctx.stroke();
-          }
-        }
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.12;
-            ctx.strokeStyle = `rgba(${colorsRef.current.line}, ${alpha})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        }
-      }
+      // Filter out faded particles
+      particles = particles.filter((p) => p.alpha > 0);
 
       animationId = requestAnimationFrame(draw);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const dx = e.clientX - lastMousePos.current.x;
+      const dy = e.clientY - lastMousePos.current.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // Spawn new word only if cursor moved more than 20 pixels
+      if (dist > 20) {
+        spawnParticle(e.clientX, e.clientY);
+        lastMousePos.current = { x: e.clientX, y: e.clientY };
+      }
+    };
+
+    // Pre-populate with initial drifting particles for visual depth on load
+    for (let i = 0; i < 20; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        text: TECH_WORDS[Math.floor(Math.random() * TECH_WORDS.length)],
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: -Math.random() * 0.6 - 0.1,
+        alpha: Math.random() * 0.7 + 0.2,
+        size: Math.floor(Math.random() * 6) + 11
+      });
+    }
+
+    // Attach listeners directly to the window context
     window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', handleMouseMove);
+    
     resizeCanvas();
     draw();
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
-      mouseRef.current.isPresent = true;
-    };
-
-    const handleMouseLeave = () => {
-      mouseRef.current.isPresent = false;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationId);
     };
   }, []);
@@ -151,10 +138,13 @@ export default function ParticleBackground() {
       ref={canvasRef}
       style={{
         position: 'fixed',
-        inset: 0,
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
         zIndex: -1,
         pointerEvents: 'none',
-        backgroundColor: 'var(--bg-pure)'
+        backgroundColor: 'transparent'
       }}
     />
   );
