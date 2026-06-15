@@ -83,7 +83,7 @@ export default function Navbar() {
             gap: '6px'
           }}
         >
-          <span>Susheel</span>
+          <span>Susheel Kumar VS</span>
           <span style={{ 
             color: 'var(--text-white)',
             fontWeight: 600,
@@ -92,7 +92,7 @@ export default function Navbar() {
             padding: '2px 6px',
             borderRadius: '4px',
             background: 'rgba(255, 255, 255, 0.05)'
-          }}>VS</span>
+          }}>SK</span>
         </a>
 
         <nav style={{ display: 'flex', gap: '2px', overflowX: 'auto', scrollbarWidth: 'none' }}>
