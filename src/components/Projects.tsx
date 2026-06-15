@@ -19,11 +19,11 @@ const PROJECTS_DATA = [
     demo: '#'
   },
   {
-    title: 'Portfolio Website',
-    category: 'Web Application',
-    desc: 'A highly optimized, luxury-tech developer showcase emphasizing extreme minimalism, smooth canvas-driven animations, custom cursors, and typographic grids.',
-    tags: ['React', 'TypeScript', 'Vite', 'Framer Motion', 'Vanilla CSS'],
-    github: 'https://github.com/SusheelVaddi/Portfolio',
+    title: 'Automatic Vacuum Cleaner',
+    category: 'Internet of Things',
+    desc: 'An autonomous cleaning robot designed for an Internet of Things course. Features collision avoidance logic via sonar sensors, dynamic pathfinding microcontrollers, and live telemetry tracking.',
+    tags: ['C++', 'Arduino', 'ESP32', 'IoT Sensors', 'Telemetry'],
+    github: 'https://github.com/SusheelVaddi',
     demo: '#'
   }
 ];
