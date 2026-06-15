@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Sun, Moon, Monitor } from 'lucide-react';
+import { useTheme } from './ThemeContext';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
@@ -13,6 +15,7 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +41,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light');
+    } else if (theme === 'light') {
+      setTheme('system');
+    } else {
+      setTheme('dark');
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -50, opacity: 0 }}
@@ -49,7 +62,7 @@ export default function Navbar() {
         left: '50%',
         transform: 'translateX(-50%)',
         width: 'calc(100% - 48px)',
-        maxWidth: '800px',
+        maxWidth: '820px',
         zIndex: 100,
         pointerEvents: 'none'
       }}
@@ -64,8 +77,8 @@ export default function Navbar() {
           borderRadius: '16px',
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
-          backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.85)' : 'rgba(5, 5, 5, 0.45)',
-          borderColor: scrolled ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.05)',
+          backgroundColor: scrolled ? 'rgba(var(--nav-bg), 0.85)' : 'var(--bg-card)',
+          borderColor: 'var(--border-glass)',
           pointerEvents: 'auto',
           boxShadow: scrolled ? '0 10px 40px -15px rgba(0,0,0,0.9)' : 'none'
         }}
@@ -77,10 +90,11 @@ export default function Navbar() {
             fontSize: '1.2rem',
             fontWeight: 800,
             letterSpacing: '-0.04em',
-            color: '#ffffff',
+            color: 'var(--text-white)',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px'
+            gap: '6px',
+            flexShrink: 0
           }}
         >
           <span>Susheel Kumar VS</span>
@@ -88,54 +102,81 @@ export default function Navbar() {
             color: 'var(--text-white)',
             fontWeight: 600,
             fontSize: '0.8rem',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
+            border: '1px solid var(--border-glass-hover)',
             padding: '2px 6px',
             borderRadius: '4px',
-            background: 'rgba(255, 255, 255, 0.05)'
+            background: 'rgba(255, 255, 255, 0.05)',
+            flexShrink: 0
           }}>SK</span>
         </a>
 
-        <nav style={{ display: 'flex', gap: '2px', overflowX: 'auto', scrollbarWidth: 'none' }}>
-          {NAV_ITEMS.map((item) => {
-            const sectionId = item.href.slice(1);
-            const isActive = activeSection === sectionId;
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <nav style={{ display: 'flex', gap: '2px', overflowX: 'auto', scrollbarWidth: 'none' }}>
+            {NAV_ITEMS.map((item) => {
+              const sectionId = item.href.slice(1);
+              const isActive = activeSection === sectionId;
 
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  position: 'relative',
-                  padding: '8px 14px',
-                  textDecoration: 'none',
-                  fontSize: '0.85rem',
-                  fontWeight: 500,
-                  color: isActive ? '#ffffff' : 'var(--text-gray)',
-                  transition: 'color 0.3s ease',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="active-nav-pill"
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '8px',
-                      zIndex: -1
-                    }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                {item.label}
-              </a>
-            );
-          })}
-        </nav>
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  style={{
+                    position: 'relative',
+                    padding: '8px 12px',
+                    textDecoration: 'none',
+                    fontSize: '0.85rem',
+                    fontWeight: 500,
+                    color: isActive ? 'var(--text-white)' : 'var(--text-gray)',
+                    transition: 'color 0.3s ease',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-nav-pill"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        border: '1px solid var(--border-glass-hover)',
+                        borderRadius: '8px',
+                        zIndex: -1
+                      }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Sleek Theme Selector */}
+          <button
+            onClick={toggleTheme}
+            title={`Active Theme: ${theme.toUpperCase()} (Click to cycle)`}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '32px',
+              height: '32px',
+              borderRadius: '8px',
+              backgroundColor: 'var(--border-glass)',
+              border: '1px solid var(--border-glass-hover)',
+              color: 'var(--text-white)',
+              cursor: 'pointer',
+              flexShrink: 0,
+              outline: 'none'
+            }}
+          >
+            {theme === 'dark' && <Moon size={14} />}
+            {theme === 'light' && <Sun size={14} />}
+            {theme === 'system' && <Monitor size={14} />}
+          </button>
+        </div>
       </div>
     </motion.header>
   );

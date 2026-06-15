@@ -35,8 +35,8 @@ export default function Hero() {
               gap: '8px',
               padding: '6px 14px',
               borderRadius: '9999px',
-              backgroundColor: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backgroundColor: 'var(--bg-secondary)',
+              border: '1px solid var(--border-secondary)',
               fontSize: '0.85rem',
               fontWeight: 500,
               color: 'var(--text-gray)',
@@ -46,10 +46,10 @@ export default function Hero() {
             <span style={{
               width: '6px',
               height: '6px',
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--text-white)',
               borderRadius: '50%',
               display: 'inline-block',
-              boxShadow: '0 0 8px #ffffff'
+              boxShadow: '0 0 8px var(--text-white)'
             }} />
             Open for internships & collaborations
           </div>

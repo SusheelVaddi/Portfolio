@@ -74,7 +74,7 @@ export default function Achievements() {
             top: '0',
             bottom: '0',
             width: '2px',
-            backgroundColor: 'rgba(255, 255, 255, 0.08)'
+            backgroundColor: 'var(--border-secondary)'
           }} />
 
           {/* Timeline Nodes */}
@@ -104,15 +104,15 @@ export default function Achievements() {
                     width: '64px',
                     height: '64px',
                     borderRadius: '50%',
-                    backgroundColor: '#000000',
-                    border: '2px solid rgba(255, 255, 255, 0.15)',
+                    backgroundColor: 'var(--bg-pure)',
+                    border: '2px solid var(--border-glass-hover)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: 'var(--text-white)',
                     zIndex: 2,
                     flexShrink: 0,
-                    boxShadow: '0 0 15px rgba(0,0,0,0.9)'
+                    boxShadow: 'var(--shadow-glass)'
                   }}>
                     <Icon size={22} />
                   </div>
@@ -122,9 +122,7 @@ export default function Achievements() {
                     className="glass-panel" 
                     style={{
                       flexGrow: 1,
-                      padding: '30px',
-                      backgroundColor: 'rgba(10, 10, 10, 0.45)',
-                      borderColor: 'rgba(255, 255, 255, 0.06)'
+                      padding: '30px'
                     }}
                   >
                     <div style={{
@@ -136,7 +134,7 @@ export default function Achievements() {
                       marginBottom: '12px'
                     }}>
                       <div>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-white)' }}>
                           {item.title}
                         </h3>
                         <span style={{ fontSize: '0.85rem', color: 'var(--text-gray)', fontWeight: 500 }}>
@@ -146,8 +144,8 @@ export default function Achievements() {
                       <span style={{
                         fontSize: '0.75rem',
                         fontWeight: 600,
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        backgroundColor: 'var(--bg-secondary)',
+                        border: '1px solid var(--border-secondary)',
                         padding: '4px 10px',
                         borderRadius: '6px',
                         color: 'var(--text-silver)',

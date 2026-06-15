@@ -125,9 +125,7 @@ export default function Skills() {
                   padding: '24px',
                   display: 'flex',
                   alignItems: 'flex-start',
-                  gap: '16px',
-                  backgroundColor: 'rgba(10, 10, 10, 0.4)',
-                  borderColor: 'rgba(255, 255, 255, 0.04)'
+                  gap: '16px'
                 }}
               >
                 {/* Clean, monochrome icon wrap */}
@@ -135,8 +133,8 @@ export default function Skills() {
                   width: '36px',
                   height: '36px',
                   borderRadius: '6px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-secondary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -147,7 +145,7 @@ export default function Skills() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: '#ffffff' }}>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-white)' }}>
                     {skill.name}
                   </h3>
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-gray)', lineHeight: 1.5 }}>

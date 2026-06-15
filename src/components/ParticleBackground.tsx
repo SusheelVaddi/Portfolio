@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from './ThemeContext';
 
 interface Particle {
   x: number;
@@ -11,6 +12,27 @@ interface Particle {
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0, isPresent: false });
+  const { resolvedTheme } = useTheme();
+
+  // Dynamic colors reference based on active theme
+  const colorsRef = useRef({
+    particle: 'rgba(255, 255, 255, 0.2)',
+    line: '255, 255, 255'
+  });
+
+  useEffect(() => {
+    if (resolvedTheme === 'light') {
+      colorsRef.current = {
+        particle: 'rgba(0, 0, 0, 0.15)',
+        line: '0, 0, 0'
+      };
+    } else {
+      colorsRef.current = {
+        particle: 'rgba(255, 255, 255, 0.2)',
+        line: '255, 255, 255'
+      };
+    }
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,7 +43,7 @@ export default function ParticleBackground() {
 
     let animationId: number;
     let particles: Particle[] = [];
-    const maxParticles = 65; // Balanced for high performance
+    const maxParticles = 65;
     const connectionDistance = 100;
 
     const resizeCanvas = () => {
@@ -36,23 +58,21 @@ export default function ParticleBackground() {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4, // Slow drift
+          vx: (Math.random() - 0.5) * 0.4,
           vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 1.5 + 0.5 // Subtle size
+          radius: Math.random() * 1.5 + 0.5
         });
       }
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+      ctx.fillStyle = colorsRef.current.particle;
 
-      // Update and draw particles
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce off walls
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
@@ -61,11 +81,9 @@ export default function ParticleBackground() {
         ctx.fill();
       });
 
-      // Draw connection lines
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
 
-        // Lines to mouse
         if (mouseRef.current.isPresent) {
           const dx = p1.x - mouseRef.current.x;
           const dy = p1.y - mouseRef.current.y;
@@ -73,7 +91,7 @@ export default function ParticleBackground() {
 
           if (dist < 130) {
             const alpha = (1 - dist / 130) * 0.15;
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(${colorsRef.current.line}, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
@@ -82,7 +100,6 @@ export default function ParticleBackground() {
           }
         }
 
-        // Lines to other particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p1.x - p2.x;
@@ -91,7 +108,7 @@ export default function ParticleBackground() {
 
           if (dist < connectionDistance) {
             const alpha = (1 - dist / connectionDistance) * 0.12;
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(${colorsRef.current.line}, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
@@ -137,7 +154,7 @@ export default function ParticleBackground() {
         inset: 0,
         zIndex: -1,
         pointerEvents: 'none',
-        backgroundColor: '#000000'
+        backgroundColor: 'var(--bg-pure)'
       }}
     />
   );

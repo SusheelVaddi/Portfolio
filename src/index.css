@@ -4,9 +4,10 @@
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Colors - Monochromatic Luxury Tech Theme */
+  /* Colors - Monochromatic Luxury Tech Theme (Dark Mode Default) */
   --bg-dark: #000000;
   --bg-pure: #000000;
+  --nav-bg: 0, 0, 0;
   --bg-card: rgba(10, 10, 10, 0.55);
   --bg-card-hover: rgba(22, 22, 22, 0.8);
   --border-glass: rgba(255, 255, 255, 0.08);
@@ -21,6 +22,52 @@
   --accent-gray: #1a1a1a;
   
   --glow-subtle: rgba(255, 255, 255, 0.03);
+  --dot-color: rgba(255, 255, 255, 0.06);
+
+  --shadow-glass: 0 4px 24px 0 rgba(0, 0, 0, 0.6);
+  --shadow-glass-hover: 0 10px 40px 0 rgba(255, 255, 255, 0.02);
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --border-secondary: rgba(255, 255, 255, 0.08);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
+  --input-focus-border: rgba(255, 255, 255, 0.45);
+  --input-focus-bg: rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="light"] {
+  /* Colors - Light Mode Inverted */
+  --bg-dark: #f5f5f7;
+  --bg-pure: #ffffff;
+  --nav-bg: 255, 255, 255;
+  --bg-card: rgba(240, 240, 245, 0.65);
+  --bg-card-hover: rgba(230, 230, 235, 0.85);
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --border-glass-hover: rgba(0, 0, 0, 0.18);
+
+  --text-white: #000000;
+  --text-silver: #000000;
+  --text-gray: #000000;
+  --text-muted: #444444;
+
+  --accent-white: #000000;
+  --accent-gray: #eaeaea;
+  
+  --glow-subtle: rgba(0, 0, 0, 0.02);
+  --dot-color: rgba(0, 0, 0, 0.08);
+
+  --shadow-glass: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  --shadow-glass-hover: 0 10px 30px 0 rgba(0, 0, 0, 0.08);
+  --bg-secondary: rgba(0, 0, 0, 0.03);
+  --border-secondary: rgba(0, 0, 0, 0.08);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
+  --input-focus-border: rgba(0, 0, 0, 0.45);
+  --input-focus-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* Global transitions for smooth premium theme switching */
+html, body, .glass-panel, .skills-card, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div, svg {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Base resets */
@@ -60,16 +107,16 @@ body {
   background: var(--bg-pure);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* Background grid overlay - Dot Matrix Pattern */
 .grid-overlay {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
   background-size: 24px 24px;
   position: absolute;
   inset: 0;
@@ -148,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-glass);
   border-radius: 12px;
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-glass);
   transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
               background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -157,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
 .glass-panel:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-glass-hover);
-  box-shadow: 0 10px 40px 0 rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow-glass-hover);
 }
 
 /* Global scroll animations helper */

@@ -72,7 +72,7 @@ export default function About() {
           color: 'var(--text-silver)',
           marginBottom: '48px'
         }}>
-          I'm <span style={{ color: '#ffffff', fontWeight: 600 }}>Susheel Kumar VS</span>, an engineering student, software developer, and AI enthusiast. I merge mathematical modeling with modern full-stack development to build clean, minimalist software products that solve actual real-world challenges.
+          I'm <span style={{ color: 'var(--text-white)', fontWeight: 600 }}>Susheel Kumar VS</span>, an engineering student, software developer, and AI enthusiast. I merge mathematical modeling with modern full-stack development to build clean, minimalist software products that solve actual real-world challenges.
         </div>
 
         {/* Card Grid */}
@@ -91,32 +91,30 @@ export default function About() {
             const Icon = card.icon;
 
             return (
-              <motion.div
-                key={idx}
-                className="glass-panel"
-                variants={itemVariants}
-                style={{
-                  padding: '36px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '20px',
-                  minHeight: '260px',
-                  backgroundColor: 'rgba(10, 10, 10, 0.4)',
-                  borderColor: 'rgba(255, 255, 255, 0.05)'
-                }}
-              >
-                {/* Icon wrapper */}
-                <div style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--text-white)'
-                }}>
+               <motion.div
+                 key={idx}
+                 className="glass-panel"
+                 variants={itemVariants}
+                 style={{
+                   padding: '36px',
+                   display: 'flex',
+                   flexDirection: 'column',
+                   gap: '20px',
+                   minHeight: '260px'
+                 }}
+               >
+                 {/* Icon wrapper */}
+                 <div style={{
+                   width: '44px',
+                   height: '44px',
+                   borderRadius: '8px',
+                   backgroundColor: 'var(--bg-secondary)',
+                   border: '1px solid var(--border-secondary)',
+                   display: 'flex',
+                   alignItems: 'center',
+                   justifyContent: 'center',
+                   color: 'var(--text-white)'
+                 }}>
                   <Icon size={20} />
                 </div>
 

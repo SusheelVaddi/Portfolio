@@ -7,9 +7,9 @@ export default function Footer() {
 
   return (
     <footer style={{
-      borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+      borderTop: '1px solid var(--border-secondary)',
       padding: '40px 0',
-      backgroundColor: '#000000',
+      backgroundColor: 'var(--bg-pure)',
       position: 'relative'
     }}>
       <div className="container" style={{
@@ -26,7 +26,7 @@ export default function Footer() {
             fontSize: '1.2rem',
             fontWeight: 800,
             letterSpacing: '-0.04em',
-            color: '#ffffff'
+            color: 'var(--text-white)'
           }}>
             Susheel Kumar VS
           </span>
@@ -65,8 +65,8 @@ export default function Footer() {
             height: '36px',
             borderRadius: '50%',
             backgroundColor: 'transparent',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            color: '#ffffff',
+            border: '1px solid var(--border-secondary)',
+            color: 'var(--text-white)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -74,11 +74,11 @@ export default function Footer() {
             transition: 'border-color 0.2s, background-color 0.2s'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#ffffff';
-            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            e.currentTarget.style.borderColor = 'var(--text-white)';
+            e.currentTarget.style.backgroundColor = 'var(--bg-secondary)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            e.currentTarget.style.borderColor = 'var(--border-secondary)';
             e.currentTarget.style.backgroundColor = 'transparent';
           }}
           title="Scroll to Top"
@@ -100,7 +100,7 @@ const footerLinkStyle = {
 const styleSheet = document.createElement("style");
 styleSheet.innerText = `
   footer a:hover {
-    color: #ffffff !important;
+    color: var(--text-white) !important;
   }
 `;
 if (typeof document !== 'undefined') {

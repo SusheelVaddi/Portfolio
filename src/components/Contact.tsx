@@ -80,8 +80,8 @@ export default function Contact() {
                   width: '44px',
                   height: '44px',
                   borderRadius: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-secondary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -91,7 +91,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Email</span>
-                  <a href="mailto:susheelvaddi07@gmail.com" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>
+                  <a href="mailto:susheelvaddi07@gmail.com" style={{ color: 'var(--text-white)', textDecoration: 'none', fontWeight: 600 }}>
                     susheelvaddi07@gmail.com
                   </a>
                 </div>
@@ -106,8 +106,8 @@ export default function Contact() {
                   width: '44px',
                   height: '44px',
                   borderRadius: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-secondary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -117,7 +117,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Phone</span>
-                  <a href="tel:+918550050707" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>
+                  <a href="tel:+918550050707" style={{ color: 'var(--text-white)', textDecoration: 'none', fontWeight: 600 }}>
                     +91 8550050707
                   </a>
                 </div>
@@ -132,8 +132,8 @@ export default function Contact() {
                   width: '44px',
                   height: '44px',
                   borderRadius: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-secondary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -143,7 +143,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Location</span>
-                  <span style={{ color: '#ffffff', fontWeight: 600 }}>
+                  <span style={{ color: 'var(--text-white)', fontWeight: 600 }}>
                     Bengaluru, India
                   </span>
                 </div>
@@ -163,7 +163,7 @@ export default function Contact() {
                     width: '44px',
                     height: '44px',
                     borderRadius: '8px',
-                    color: '#ffffff',
+                    color: 'var(--text-white)',
                     textDecoration: 'none'
                   }}
                 >
@@ -182,7 +182,7 @@ export default function Contact() {
                     width: '44px',
                     height: '44px',
                     borderRadius: '8px',
-                    color: '#ffffff',
+                    color: 'var(--text-white)',
                     textDecoration: 'none'
                   }}
                 >
@@ -218,7 +218,7 @@ export default function Contact() {
                       initial={{ scale: 0.5 }}
                       animate={{ scale: [0.5, 1.2, 1] }}
                       transition={{ duration: 0.5 }}
-                      style={{ color: '#ffffff', marginBottom: '20px' }}
+                      style={{ color: 'var(--text-white)', marginBottom: '20px' }}
                     >
                       <CheckCircle size={64} />
                     </motion.div>
@@ -338,11 +338,11 @@ export default function Contact() {
 }
 
 const inputStyle = {
-  backgroundColor: 'rgba(255, 255, 255, 0.02)',
-  border: '1px solid rgba(255, 255, 255, 0.06)',
+  backgroundColor: 'var(--bg-secondary)',
+  border: '1px solid var(--border-secondary)',
   borderRadius: '8px',
   padding: '12px 16px',
-  color: '#ffffff',
+  color: 'var(--text-white)',
   fontSize: '0.95rem',
   fontFamily: 'var(--font-body)',
   outline: 'none',
@@ -352,8 +352,8 @@ const inputStyle = {
 const styleSheet = document.createElement("style");
 styleSheet.innerText = `
   input:focus, textarea:focus {
-    border-color: rgba(255, 255, 255, 0.45) !important;
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--input-focus-border) !important;
+    background-color: var(--input-focus-bg) !important;
   }
 `;
 if (typeof document !== 'undefined') {

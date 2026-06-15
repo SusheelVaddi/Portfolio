@@ -17,6 +17,19 @@ const LOADING_STEPS = [
 export default function Loader({ onComplete }: LoaderProps) {
   const [progress, setProgress] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
+  const [loaderTheme, setLoaderTheme] = useState<'light' | 'dark'>('dark');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('user-theme');
+    if (stored === 'light') {
+      setLoaderTheme('light');
+    } else if (stored === 'system') {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setLoaderTheme(isDark ? 'dark' : 'light');
+    } else {
+      setLoaderTheme('dark');
+    }
+  }, []);
 
   useEffect(() => {
     const progressTimer = setInterval(() => {
@@ -61,7 +74,7 @@ export default function Loader({ onComplete }: LoaderProps) {
         style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: '#000000',
+          backgroundColor: loaderTheme === 'light' ? '#ffffff' : '#000000',
           zIndex: 9999,
           display: 'flex',
           flexDirection: 'column',
@@ -81,7 +94,7 @@ export default function Loader({ onComplete }: LoaderProps) {
               fontSize: '2rem',
               fontWeight: 800,
               letterSpacing: '-0.05em',
-              color: '#ffffff'
+              color: loaderTheme === 'light' ? '#000000' : '#ffffff'
             }}>
               SK.VS
             </div>
@@ -90,7 +103,7 @@ export default function Loader({ onComplete }: LoaderProps) {
           <div style={{ 
             fontSize: '4.5rem', 
             fontWeight: 800, 
-            color: '#ffffff',
+            color: loaderTheme === 'light' ? '#000000' : '#ffffff',
             letterSpacing: '-0.03em',
             lineHeight: 1,
             marginBottom: '16px',
@@ -102,7 +115,7 @@ export default function Loader({ onComplete }: LoaderProps) {
           <div style={{
             width: '100%',
             height: '2px',
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            backgroundColor: loaderTheme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
             borderRadius: '1px',
             overflow: 'hidden',
             marginBottom: '16px'
@@ -110,7 +123,7 @@ export default function Loader({ onComplete }: LoaderProps) {
             <motion.div
               style={{
                 height: '100%',
-                backgroundColor: '#ffffff'
+                backgroundColor: loaderTheme === 'light' ? '#000000' : '#ffffff'
               }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.1, ease: 'easeOut' }}
