@@ -8,21 +8,21 @@ export default function Achievements() {
       title: 'Engineering Student Journey',
       subtitle: 'B.Tech in Computer Science',
       description: 'Acquiring core expertise in distributed architectures, mathematical logic, compilers, operating systems, and object-oriented paradigms.',
-      date: '2022 - 2026'
+      date: '2025 - Present'
     },
     {
       icon: Award,
       title: 'Wadhwani Ignite Program',
       subtitle: 'Entrepreneurship & Venture Development',
       description: 'Participated in core business incubator modules, learning how to validate product market fit, create minimal viable structures, and build pitches.',
-      date: '2024 - 2025'
+      date: '2026'
     },
     {
       icon: ShieldCheck,
       title: 'Certifications & Workshops',
       subtitle: 'Cloud & AI Competitions',
       description: 'AWS Certified Cloud Practitioner. Actively competing in national hackathons and completing specialized workshops in Deep Learning and LLM prompting pipelines.',
-      date: '2023 - Present'
+      date: '2025 - Present'
     }
   ];
 
