@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mail, MapPin, CheckCircle } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle, Phone } from 'lucide-react';
 
 const GithubIcon = ({ size = 20 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -91,8 +91,34 @@ export default function Contact() {
                 </div>
                 <div>
                   <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Email</span>
-                  <a href="mailto:contact@susheel.dev" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>
-                    contact@susheel.dev
+                  <a href="mailto:susheelvaddi07@gmail.com" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>
+                    susheelvaddi07@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Info row 1b: Phone */}
+              <div 
+                className="glass-panel" 
+                style={{ padding: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}
+              >
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-white)'
+                }}>
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Phone</span>
+                  <a href="tel:+918550050707" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>
+                    +91 8550050707
                   </a>
                 </div>
               </div>
