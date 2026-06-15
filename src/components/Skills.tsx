@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Terminal, Shield, FileCode, Edit2, Zap, GitBranch, Cpu } from 'lucide-react';
+import { Terminal, Shield, FileCode, Edit2, Coffee, GitBranch, Cpu } from 'lucide-react';
 
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -40,9 +40,9 @@ const SKILLS_LIST = [
     desc: 'Responsive layout designs, flex/grid logic, custom variables.'
   },
   {
-    name: 'JavaScript',
-    icon: Zap,
-    desc: 'Asynchronous event processes, API requests, core ES6+ structures.'
+    name: 'Java',
+    icon: Coffee,
+    desc: 'Object-oriented programming, enterprise structures, JVM environments.'
   },
   {
     name: 'Git',
