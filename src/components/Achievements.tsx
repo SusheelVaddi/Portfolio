@@ -6,22 +6,22 @@ export default function Achievements() {
     {
       icon: GraduationCap,
       title: 'Engineering Student Journey',
-      subtitle: 'B.Tech in Computer Science',
-      description: 'Acquiring core expertise in distributed architectures, mathematical logic, compilers, operating systems, and object-oriented paradigms.',
+      subtitle: 'REVA University, Bangalore',
+      description: 'Pursuing a B.Tech in Computer Science & Engineering. Acquiring core fundamentals in systems development, mathematical modeling, and distributed computing architectures.',
       date: '2025 - Present'
     },
     {
       icon: Award,
       title: 'Wadhwani Ignite Program',
-      subtitle: 'Entrepreneurship & Venture Development',
-      description: 'Participated in core business incubator modules, learning how to validate product market fit, create minimal viable structures, and build pitches.',
+      subtitle: 'Venture & Ideation Incubator',
+      description: 'Successfully completed the 42-hour Ignite Full coursework in June 2026, gaining specialized skills in startup ideation, venture business modeling, and financial planning.',
       date: '2026'
     },
     {
       icon: ShieldCheck,
-      title: 'Certifications & Workshops',
-      subtitle: 'Cloud & AI Competitions',
-      description: 'AWS Certified Cloud Practitioner. Actively competing in national hackathons and completing specialized workshops in Deep Learning and LLM prompting pipelines.',
+      title: 'Hackathons & Technical Workshops',
+      subtitle: 'Competitions & Certifications',
+      description: 'Active participant in competitive development tracks, including:\n• Team Vibranium Core - Xcelerate 24hr Hackathon (NIKSHATRA E-Summit 2025, BIT Bangalore)\n• BugBash debugging competitor (Aayam 2025, Newton School of Technology)\n• Full-Stack Spring Boot developer training (REVA University CSE Club)\n• Certified AI Workshop graduate (CertMeter, Nov 2025)',
       date: '2025 - Present'
     }
   ];
@@ -160,7 +160,8 @@ export default function Achievements() {
                     <p style={{
                       fontSize: '0.925rem',
                       lineHeight: 1.6,
-                      color: 'var(--text-gray)'
+                      color: 'var(--text-gray)',
+                      whiteSpace: 'pre-line'
                     }}>
                       {item.description}
                     </p>
