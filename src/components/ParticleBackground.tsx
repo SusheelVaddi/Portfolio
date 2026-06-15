@@ -18,6 +18,17 @@ interface CodeColumn {
   opacity: number;
 }
 
+interface OrbitingWord {
+  text: string;
+  orbitRadiusX: number;
+  orbitRadiusY: number;
+  orbitAngle: number;
+  orbitSpeed: number;
+  spinAngle: number;
+  spinSpeed: number;
+  size: number;
+}
+
 const CODE_SNIPPETS = [
   '#include <stdio.h>',
   'int main() { printf("Hello SK"); }',
@@ -56,12 +67,14 @@ export default function ParticleBackground() {
     let animationId: number;
     let cursorParticles: CursorParticle[] = [];
     let backgroundColumns: CodeColumn[] = [];
+    let orbitingWords: OrbitingWord[] = [];
     const maxCursorParticles = 60;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       initColumns();
+      initOrbitingWords();
     };
 
     const initColumns = () => {
@@ -74,7 +87,6 @@ export default function ParticleBackground() {
         const x = i * colWidth + Math.random() * 50;
         const y = Math.random() * window.innerHeight;
         
-        // Create initial snippet stack for each column
         const snippets: string[] = [];
         for (let j = 0; j < 10; j++) {
           snippets.push(CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)]);
@@ -88,6 +100,45 @@ export default function ParticleBackground() {
           opacity: Math.random() * 0.04 + 0.02 // very faint ambient overlay
         });
       }
+    };
+
+    const initOrbitingWords = () => {
+      orbitingWords = [];
+      const spaceWords = [
+        'C Language',
+        'Python',
+        'React',
+        'AI Tools',
+        'Java',
+        'GitHub',
+        'TypeScript',
+        'Arduino',
+        'IoT',
+        'CSS3',
+        'Git',
+        '01'
+      ];
+
+      spaceWords.forEach((word, idx) => {
+        // Distribute orbit sizes to create a layered "planet ring" effect
+        const orbitRadiusX = window.innerWidth * 0.3 + idx * 22;
+        const orbitRadiusY = window.innerHeight * 0.25 + idx * 12;
+        
+        // Very slow orbiting speeds
+        const orbitSpeed = (Math.random() * 0.001 + 0.0005) * (Math.random() > 0.5 ? 1 : -1);
+        const spinSpeed = (Math.random() * 0.003 + 0.001) * (Math.random() > 0.5 ? 1 : -1);
+
+        orbitingWords.push({
+          text: word,
+          orbitRadiusX,
+          orbitRadiusY,
+          orbitAngle: (idx / spaceWords.length) * Math.PI * 2,
+          orbitSpeed,
+          spinAngle: Math.random() * Math.PI * 2,
+          spinSpeed,
+          size: Math.floor(Math.random() * 8) + 16 // font size 16px to 24px
+        });
+      });
     };
 
     const spawnCursorParticle = (x: number, y: number) => {
@@ -118,14 +169,13 @@ export default function ParticleBackground() {
       backgroundColumns.forEach((col) => {
         col.y += col.speed;
         
-        // Wrap columns when they reach the bottom
         if (col.y > window.innerHeight) {
           col.y = -200;
           col.snippets = col.snippets.map(() => CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)]);
         }
 
         col.snippets.forEach((snippet, idx) => {
-          const snippetY = col.y + idx * 40; // vertical separation
+          const snippetY = col.y + idx * 40;
           if (snippetY < -30 || snippetY > window.innerHeight + 30) return;
 
           const activeOpacity = isLight ? col.opacity * 0.55 : col.opacity * 0.75;
@@ -137,12 +187,51 @@ export default function ParticleBackground() {
         });
       });
 
-      // 2. Render Interactive Cursor Spawns
+      // 2. Render 3D Space-Lost Orbiting Code Languages
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      orbitingWords.forEach((word) => {
+        word.orbitAngle += word.orbitSpeed;
+        word.spinAngle += word.spinSpeed;
+
+        const cos = Math.cos(word.orbitAngle);
+        const sin = Math.sin(word.orbitAngle);
+
+        const px = centerX + cos * word.orbitRadiusX;
+        // Tilt the orbital plane to create an angled galactic look
+        const py = centerY + sin * word.orbitRadiusY * 0.35 + cos * 40;
+
+        // Use the sin value as a depth coordinate to scale size and opacity
+        const scale = (sin + 1.5) / 2.5; // range 0.2 to 1.0
+        
+        const baseOpacity = isLight ? 0.08 : 0.12;
+        const opacity = scale * baseOpacity;
+
+        ctx.save();
+        ctx.translate(px, py);
+        ctx.rotate(word.spinAngle);
+
+        ctx.font = `800 ${Math.floor(word.size * scale)}px var(--font-heading)`;
+        ctx.fillStyle = isLight
+          ? `rgba(0, 0, 0, ${opacity})`
+          : `rgba(255, 255, 255, ${opacity})`;
+
+        ctx.fillText(word.text, 0, 0);
+        ctx.restore();
+      });
+
+      // Reset baseline alignment for standard renders
+      ctx.textBaseline = 'alphabetic';
+
+      // 3. Render Interactive Cursor Spawns
       ctx.textAlign = 'left';
       cursorParticles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-        p.alpha -= 0.008; // fade-out
+        p.alpha -= 0.008;
 
         if (p.alpha <= 0) return;
 
