@@ -72,7 +72,7 @@ export default function About() {
           color: 'var(--text-silver)',
           marginBottom: '48px'
         }}>
-          I'm <span style={{ color: 'var(--text-white)', fontWeight: 600 }}>Susheel Kumar VS</span>, an engineering student, software developer, and AI enthusiast. I merge mathematical modeling with modern full-stack development to build clean, minimalist software products that solve actual real-world challenges.
+          I'm <span style={{ color: 'var(--text-white)', fontWeight: 600 }}>Susheel Kumar VS</span>, a Computer Science & Engineering student specializing in Artificial Intelligence & Data Science (AI & DS) at the School of CSE, REVA University. As a software developer and AI enthusiast, I merge mathematical modeling with modern full-stack development to build clean, minimalist software products that solve real-world challenges.
         </div>
 
         {/* Card Grid */}

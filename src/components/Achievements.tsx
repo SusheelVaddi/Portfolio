@@ -7,7 +7,7 @@ export default function Achievements() {
       icon: GraduationCap,
       title: 'Engineering Student Journey',
       subtitle: 'REVA University, Bangalore',
-      description: 'Pursuing a B.Tech in Computer Science & Engineering. Acquiring core fundamentals in systems development, mathematical modeling, and distributed computing architectures.',
+      description: 'Pursuing a B.Tech in Computer Science & Engineering, specializing in Artificial Intelligence & Data Science (AI & DS). Acquiring core fundamentals in systems development, mathematical modeling, and distributed computing architectures.',
       date: '2025 - Present'
     },
     {
