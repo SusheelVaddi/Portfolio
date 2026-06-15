@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowDown, CornerDownRight } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -13,37 +13,19 @@ export default function Hero() {
         alignItems: 'center',
         position: 'relative',
         paddingTop: '120px',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: 'transparent'
       }}
     >
-      {/* Light mesh grids and spotlights for premium feel */}
+      {/* Refined subtle top grid and soft mesh gradients */}
       <div className="grid-overlay" />
       
-      {/* Backdrop spotlight */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: '30%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '50vw',
-          height: '50vw',
-          maxWidth: '600px',
-          maxHeight: '600px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(59, 130, 246, 0.08) 50%, transparent 100%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-          zIndex: -1
-        }}
-      />
-
       <div className="container" style={{ textAlign: 'center', zIndex: 10 }}>
-        {/* Availability Badge */}
+        {/* Sub-badge indicating status */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           style={{ display: 'inline-block', marginBottom: '24px' }}
         >
           <div
@@ -54,64 +36,78 @@ export default function Hero() {
               padding: '6px 14px',
               borderRadius: '9999px',
               backgroundColor: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(255, 255, 255, 0.05)',
-              fontSize: '0.875rem',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              fontSize: '0.85rem',
               fontWeight: 500,
-              color: 'var(--text-gray)'
+              color: 'var(--text-gray)',
+              letterSpacing: '0.02em'
             }}
           >
             <span style={{
-              width: '8px',
-              height: '8px',
-              backgroundColor: '#10b981',
+              width: '6px',
+              height: '6px',
+              backgroundColor: '#ffffff',
               borderRadius: '50%',
               display: 'inline-block',
-              boxShadow: '0 0 10px #10b981',
-              animation: 'pulse 2s infinite'
+              boxShadow: '0 0 8px #ffffff'
             }} />
-            Open for new opportunities
+            Open for internships & collaborations
           </div>
         </motion.div>
 
-        {/* Hero Title */}
+        {/* Name Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
+            lineHeight: 1.05,
+            fontWeight: 800,
+            marginBottom: '16px',
+            letterSpacing: '-0.05em'
+          }}
+        >
+          Susheel Kumar VS
+        </motion.h1>
+
+        {/* Roles Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            fontSize: 'clamp(1rem, 2.5vw, 1.35rem)',
+            fontWeight: 500,
+            color: 'var(--text-silver)',
+            marginBottom: '24px',
+            letterSpacing: '-0.01em'
+          }}
+        >
+          Engineering Student <span style={{ color: 'var(--text-gray)' }}>|</span> Developer <span style={{ color: 'var(--text-gray)' }}>|</span> AI Enthusiast
+        </motion.p>
+
+        {/* Description Copy */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            lineHeight: 1.1,
-            fontWeight: 800,
-            marginBottom: '20px',
-            letterSpacing: '-0.04em'
-          }}
-        >
-          Designing Digital <br />
-          <span className="purple-blue-gradient-text">Masterpieces.</span>
-        </motion.h1>
-
-        {/* Description Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+            fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)',
             color: 'var(--text-gray)',
-            maxWidth: '600px',
+            maxWidth: '560px',
             margin: '0 auto 40px auto',
             lineHeight: 1.6
           }}
         >
-          Hi, I'm <span style={{ color: '#ffffff', fontWeight: 600 }}>Susheel Kumar VS</span>. 
-          A developer building modern web applications, focusing on minimal design, rich interactivity, and clean codebases.
+          Building high-fidelity software products and deep learning integrations. Focused on clean engineering logic and pixel-perfect minimalism.
         </motion.p>
 
-        {/* Call to Actions */}
+        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           style={{
             display: 'flex',
             flexDirection: 'row',
@@ -121,69 +117,43 @@ export default function Hero() {
             flexWrap: 'wrap'
           }}
         >
-          {/* View Projects Button */}
           <a
             href="#projects"
+            className="btn-primary"
             style={{
               textDecoration: 'none',
               padding: '14px 28px',
-              borderRadius: '14px',
-              background: 'linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%)',
-              color: '#ffffff',
-              fontSize: '0.975rem',
-              fontWeight: 600,
-              boxShadow: '0 8px 25px -5px rgba(168, 85, 247, 0.4)',
+              borderRadius: '8px',
+              fontSize: '0.925rem',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '8px',
-              transition: 'transform 0.2s, box-shadow 0.2s'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 12px 30px -5px rgba(168, 85, 247, 0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 25px -5px rgba(168, 85, 247, 0.4)';
+              gap: '8px'
             }}
           >
             Explore Projects
-            <ArrowUpRight size={18} />
+            <CornerDownRight size={16} />
           </a>
 
-          {/* Let's Talk Button */}
           <a
             href="#contact"
+            className="btn-secondary"
             style={{
               textDecoration: 'none',
               padding: '14px 28px',
-              borderRadius: '14px',
-              background: 'rgba(255, 255, 255, 0.03)',
-              color: '#ffffff',
-              fontSize: '0.975rem',
-              fontWeight: 600,
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              transition: 'background 0.2s, border-color 0.2s'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+              borderRadius: '8px',
+              fontSize: '0.925rem'
             }}
           >
-            Get in touch
+            Contact Me
           </a>
         </motion.div>
       </div>
 
-      {/* Scroll Down mouse wheel indicator */}
+      {/* Down arrow mouse scroll */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
         style={{
           position: 'absolute',
           bottom: '40px',
@@ -196,48 +166,24 @@ export default function Hero() {
           color: 'var(--text-muted)'
         }}
       >
-        <div style={{
-          width: '24px',
-          height: '40px',
-          border: '2px solid rgba(255, 255, 255, 0.15)',
-          borderRadius: '12px',
-          display: 'flex',
-          justifyContent: 'center',
-          padding: '6px'
-        }}>
-          <motion.div
-            animate={{
-              y: [0, 12, 0]
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-            style={{
-              width: '4px',
-              height: '8px',
-              backgroundColor: 'var(--text-gray)',
-              borderRadius: '2px'
-            }}
-          />
-        </div>
-        <ChevronDown size={14} style={{ opacity: 0.6 }} />
+        <motion.div
+          animate={{
+            y: [0, 8, 0]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: 'easeInOut'
+          }}
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            const target = document.getElementById('about');
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <ArrowDown size={20} />
+        </motion.div>
       </motion.div>
-
-      {/* Pulse Animation Definition */}
-      <style>{`
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.5;
-            transform: scale(1.15);
-          }
-        }
-      `}</style>
     </section>
   );
 }

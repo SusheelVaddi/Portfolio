@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './App.css'; // import helper styles if needed
+import './App.css';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
+import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutBento from './components/AboutBento';
+import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  // Setup scroll animation reveals using IntersectionObserver
+  // Setup reveal elements transition listener
   useEffect(() => {
     if (loading) return;
 
@@ -24,7 +26,7 @@ export default function App() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target); // Reveal once
+          observer.unobserve(entry.target);
         }
       });
     }, {
@@ -39,7 +41,6 @@ export default function App() {
 
   return (
     <>
-      {/* Premium Loader screen */}
       <AnimatePresence mode="wait">
         {loading && (
           <Loader key="loader" onComplete={() => setLoading(false)} />
@@ -50,43 +51,47 @@ export default function App() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ minHeight: '100vh', position: 'relative' }}
         >
-          {/* Custom Trailing Cursor */}
+          {/* Custom Monochrome Trailing Cursor */}
           <CustomCursor />
 
-          {/* Floating animated background spotlights */}
-          <div className="mesh-bg">
-            <div className="mesh-glow mesh-glow-1" />
-            <div className="mesh-glow mesh-glow-2" />
-            <div className="mesh-glow mesh-glow-3" />
-          </div>
+          {/* Canvas particle background */}
+          <ParticleBackground />
+
+          {/* Soft floating blurred shapes for premium layout depth */}
+          <div className="bg-glow-shape glow-shape-1" />
+          <div className="bg-glow-shape glow-shape-2" />
 
           {/* Floating Navigation Header */}
           <Navbar />
 
-          {/* Page content blocks */}
           <main>
             {/* Hero Section */}
             <Hero />
 
-            {/* About & Achievements Bento Grid Section */}
+            {/* About Cards Section */}
             <div className="reveal">
-              <AboutBento />
+              <About />
             </div>
 
-            {/* Skills Section */}
+            {/* Skills Grid Section */}
             <div className="reveal">
               <Skills />
             </div>
 
-            {/* Projects Section */}
+            {/* Projects Showcase Section */}
             <div className="reveal">
               <Projects />
             </div>
 
-            {/* Contact Section */}
+            {/* Achievements Timeline Section */}
+            <div className="reveal">
+              <Achievements />
+            </div>
+
+            {/* Contact Form Section */}
             <div className="reveal">
               <Contact />
             </div>

@@ -1,214 +1,163 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Server, Cloud, Cpu } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Terminal, Shield, FileCode, Edit2, Zap, GitBranch, Cpu } from 'lucide-react';
 
-const SKILLS_DATA = [
+const GithubIcon = ({ size = 18 }: { size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.2 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const SKILLS_LIST = [
   {
-    category: 'frontend',
-    title: 'Frontend Development',
-    icon: Code2,
-    skills: [
-      { name: 'React.js', level: 90 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'Next.js', level: 80 },
-      { name: 'HTML5 & CSS3', level: 95 },
-      { name: 'Framer Motion', level: 80 },
-      { name: 'TailwindCSS', level: 90 }
-    ]
+    name: 'C Language',
+    icon: Terminal,
+    desc: 'Systems programming, memory management, algorithms.'
   },
   {
-    category: 'backend',
-    title: 'Backend & DBs',
-    icon: Server,
-    skills: [
-      { name: 'Node.js', level: 88 },
-      { name: 'Express', level: 85 },
-      { name: 'Python', level: 80 },
-      { name: 'PostgreSQL', level: 82 },
-      { name: 'MongoDB', level: 85 },
-      { name: 'GraphQL', level: 75 }
-    ]
+    name: 'Python',
+    icon: Shield,
+    desc: 'Data analysis, ML integration, automated scripts.'
   },
   {
-    category: 'devops',
-    title: 'Cloud & DevOps',
-    icon: Cloud,
-    skills: [
-      { name: 'AWS Cloud', level: 80 },
-      { name: 'Docker', level: 75 },
-      { name: 'Git & GitHub', level: 90 },
-      { name: 'CI/CD Pipelines', level: 78 },
-      { name: 'Vercel / Netlify', level: 88 },
-      { name: 'Linux Commands', level: 80 }
-    ]
+    name: 'HTML5',
+    icon: FileCode,
+    desc: 'Semantic web formatting, standard tags, DOM outlines.'
   },
   {
-    category: 'fundamentals',
-    title: 'Core Fundamentals',
+    name: 'CSS3',
+    icon: Edit2,
+    desc: 'Responsive layout designs, flex/grid logic, custom variables.'
+  },
+  {
+    name: 'JavaScript',
+    icon: Zap,
+    desc: 'Asynchronous event processes, API requests, core ES6+ structures.'
+  },
+  {
+    name: 'Git',
+    icon: GitBranch,
+    desc: 'Local version control, commit trees, branches alignment.'
+  },
+  {
+    name: 'GitHub',
+    icon: GithubIcon,
+    desc: 'Cloud code distribution, repo configurations, actions pipeline.'
+  },
+  {
+    name: 'AI Tools',
     icon: Cpu,
-    skills: [
-      { name: 'Data Structures', level: 85 },
-      { name: 'Algorithms (DSA)', level: 82 },
-      { name: 'REST APIs', level: 92 },
-      { name: 'System Design', level: 75 },
-      { name: 'SQL Querying', level: 85 },
-      { name: 'OOP Concepts', level: 90 }
-    ]
+    desc: 'Agent models, developer systems integration, advanced prompting.'
   }
 ];
 
 export default function Skills() {
-  const [activeTab, setActiveTab] = useState('frontend');
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 }
+    }
+  };
 
-  const activeCategory = SKILLS_DATA.find((item) => item.category === activeTab);
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring' as const, stiffness: 100, damping: 15 }
+    }
+  };
 
   return (
     <section id="skills" style={{ position: 'relative' }}>
-      {/* Visual background elements */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: '50%',
-          right: '5%',
-          width: '350px',
-          height: '350px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-          zIndex: -1
-        }}
-      />
-
       <div className="container">
         
         {/* Section Heading */}
         <div style={{ marginBottom: '50px', textAlign: 'left' }}>
           <span style={{
             fontSize: '0.875rem',
-            color: 'var(--accent-blue)',
+            color: 'var(--text-white)',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
             fontWeight: 600,
             display: 'block',
             marginBottom: '8px'
           }}>
-            Competencies
+            Abilities
           </span>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-            Technical <span className="purple-blue-gradient-text">Skillset</span>
+            Technical <span className="gradient-text">Skills</span>
           </h2>
         </div>
 
-        {/* Categories Tab Selector */}
-        <div style={{
-          display: 'flex',
-          gap: '12px',
-          overflowX: 'auto',
-          paddingBottom: '16px',
-          marginBottom: '32px',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none'
-        }}>
-          {SKILLS_DATA.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.category;
+        {/* Skills Grid */}
+        <motion.div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+            gap: '16px'
+          }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {SKILLS_LIST.map((skill) => {
+            const Icon = skill.icon;
 
             return (
-              <button
-                key={item.category}
-                onClick={() => setActiveTab(item.category)}
+              <motion.div
+                key={skill.name}
+                className="glass-panel skills-card"
+                variants={itemVariants}
                 style={{
+                  padding: '24px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '16px',
+                  backgroundColor: 'rgba(10, 10, 10, 0.4)',
+                  borderColor: 'rgba(255, 255, 255, 0.04)'
+                }}
+              >
+                {/* Clean, monochrome icon wrap */}
+                <div style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '6px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '10px',
-                  padding: '12px 24px',
-                  borderRadius: '14px',
-                  border: isActive ? '1px solid rgba(59, 130, 246, 0.4)' : '1px solid rgba(255, 255, 255, 0.05)',
-                  backgroundColor: isActive ? 'rgba(59, 130, 246, 0.08)' : 'rgba(10, 8, 20, 0.45)',
-                  color: isActive ? '#ffffff' : 'var(--text-gray)',
-                  fontSize: '0.925rem',
-                  fontWeight: 600,
-                  whiteSpace: 'nowrap',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                <Icon size={18} style={{ color: isActive ? 'var(--accent-blue)' : 'var(--text-gray)' }} />
-                {item.title}
-              </button>
+                  justifyContent: 'center',
+                  color: 'var(--text-white)',
+                  flexShrink: 0
+                }}>
+                  <Icon size={18} />
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: '#ffffff' }}>
+                    {skill.name}
+                  </h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-gray)', lineHeight: 1.5 }}>
+                    {skill.desc}
+                  </p>
+                </div>
+              </motion.div>
             );
           })}
-        </div>
-
-        {/* Skills List Container */}
-        <div style={{ minHeight: '260px' }}>
-          <AnimatePresence mode="wait">
-            {activeCategory && (
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                  gap: '20px'
-                }}
-              >
-                {activeCategory.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="glass-panel skills-card"
-                    style={{
-                      padding: '24px',
-                      position: 'relative',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {/* Glowing mesh grid behind card */}
-                    <div className="grid-overlay" style={{ opacity: 0.2 }} />
-
-                    {/* Skill Info */}
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      marginBottom: '16px'
-                    }}>
-                      <span style={{ fontSize: '1.05rem', fontWeight: 600, color: '#ffffff' }}>
-                        {skill.name}
-                      </span>
-                      <span style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--accent-blue)' }}>
-                        {skill.level}%
-                      </span>
-                    </div>
-
-                    {/* Skill Progress Bar */}
-                    <div style={{
-                      width: '100%',
-                      height: '6px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                      borderRadius: '3px',
-                      overflow: 'hidden'
-                    }}>
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.level}%` }}
-                        transition={{ duration: 0.8, ease: 'easeOut' }}
-                        style={{
-                          height: '100%',
-                          background: 'linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-purple) 100%)',
-                          borderRadius: '3px'
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        </motion.div>
 
       </div>
     </section>
