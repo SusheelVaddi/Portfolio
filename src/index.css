@@ -92,12 +92,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide default cursor on desktops to support the custom cursor */
-@media (min-width: 1024px) {
-  body, a, button, input, textarea, [role="button"] {
-    cursor: none !important;
-  }
-}
+/* Custom cursor hidden rules removed to restore standard arrow cursor */
 
 /* Scrollbar styles */
 ::-webkit-scrollbar {

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import Loader from './components/Loader';
-import CustomCursor from './components/CustomCursor';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -54,8 +53,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ minHeight: '100vh', position: 'relative' }}
         >
-          {/* Custom Monochrome Trailing Cursor */}
-          <CustomCursor />
+
 
           {/* Canvas particle background */}
           <ParticleBackground />
