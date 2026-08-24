@@ -1,0 +1,10 @@
+{
+  "name": "susheel-portfolio",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
