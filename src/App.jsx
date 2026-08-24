@@ -5,8 +5,7 @@ import About from "./components/About";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Tools from "./components/Tools";
-import Projects from "./components/Projects";
-import Certifications from "./components/Certifications";
+import ProjectsAndCertifications from "./components/ProjectsAndCertifications";
 import CareerGoals from "./components/CareerGoals";
 
 import Contact from "./components/Contact";
@@ -58,8 +57,7 @@ export default function App() {
         <Education />
         <Skills />
         <Tools />
-        <Projects />
-        <Certifications />
+        <ProjectsAndCertifications />
         <CareerGoals />
 
         <Contact />

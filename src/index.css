@@ -755,6 +755,22 @@ ol {
 }
 
 /* ---- Projects ---- */
+.side-by-side-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.section-header.left-aligned {
+  text-align: left;
+  margin-bottom: var(--space-xl);
+}
+
+.section-header.left-aligned .section-subtitle {
+  margin: var(--space-xs) 0 0;
+}
+
 .projects-list {
   display: flex;
   flex-direction: column;
