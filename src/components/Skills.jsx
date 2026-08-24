@@ -1,5 +1,4 @@
 import { skillsData } from "../data/portfolioData";
-import { SkillCategoryIcon } from "./Icons";
 
 export default function Skills() {
   return (
@@ -13,23 +12,25 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="skills-grid fade-in">
-          {skillsData.map((category, i) => (
-            <div key={i} className="skill-card">
-              <div className="skill-card-icon">
-                <SkillCategoryIcon icon={category.icon} />
-              </div>
-              <h3 className="skill-card-title">{category.category}</h3>
-              <ul className="skill-list">
-                {category.skills.map((skill, j) => (
-                  <li key={j} className="skill-list-item">
-                    <span className="skill-bullet" aria-hidden="true" />
-                    <span>{skill}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="skills-single-card fade-in">
+          <ul className="skills-main-list">
+            {skillsData.map((category, i) => (
+              <li key={i} className="skills-category-item">
+                <div className="skills-category-header">
+                  <span className="skills-main-bullet" aria-hidden="true" />
+                  <h3 className="skills-category-title">{category.category}</h3>
+                </div>
+                <ul className="skills-sub-list">
+                  {category.skills.map((skill, j) => (
+                    <li key={j} className="skills-sub-item">
+                      <span className="skills-dash">-</span>
+                      <span>{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
