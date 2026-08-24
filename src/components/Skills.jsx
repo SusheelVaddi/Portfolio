@@ -13,21 +13,15 @@ export default function Skills() {
         </div>
 
         <div className="skills-single-card fade-in">
-          <ul className="skills-main-list">
+          <ul className="skills-inline-list">
             {skillsData.map((category, i) => (
-              <li key={i} className="skills-category-item">
-                <div className="skills-category-header">
-                  <span className="skills-main-bullet" aria-hidden="true" />
-                  <h3 className="skills-category-title">{category.category}</h3>
+              <li key={i} className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">{category.category}</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">{category.skills.join(", ")}</span>
                 </div>
-                <ul className="skills-sub-list">
-                  {category.skills.map((skill, j) => (
-                    <li key={j} className="skills-sub-item">
-                      <span className="skills-dash">-</span>
-                      <span>{skill}</span>
-                    </li>
-                  ))}
-                </ul>
               </li>
             ))}
           </ul>
