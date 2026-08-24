@@ -110,7 +110,7 @@ export const projectsData = [
     name: "Autonomous Smart Vacuum",
     domain: "IoT, Embedded Systems & Robotics",
     description:
-      "The Autonomous Smart Vacuum was a team-based IoT and robotics project developed during my 2nd semester. The project focused on developing a smart vacuum system capable of detecting obstacles and navigating its surroundings autonomously.",
+      "A team-based IoT and robotics project developing a smart vacuum system capable of obstacle detection and autonomous navigation.",
     technologies: [
       "Arduino Uno",
       "HC-SR04 Ultrasonic Sensor",
@@ -141,9 +141,9 @@ export const projectsData = [
   {
     id: 2,
     name: "MediScan.AI",
-    domain: "Artificial Intelligence, Healthcare & Entrepreneurship",
+    domain: "AI, Healthcare & Entrepreneurship",
     description:
-      "MediScan.AI is an AI-based healthcare assistant designed to make complex medical information easier for common users to understand. The project focuses on using OCR and AI/vision technologies to analyze medical reports, prescriptions, X-rays, and symptoms and convert complex medical information into simple, understandable explanations.",
+      "An AI healthcare assistant using OCR and computer vision to analyze medical reports and prescriptions into simplified explanations.",
     features: [
       "AI-powered medical report analysis",
       "OCR-based information extraction",
