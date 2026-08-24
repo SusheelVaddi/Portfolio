@@ -1,4 +1,4 @@
-import { aboutData, personalInfo } from "../data/portfolioData";
+import { aboutData } from "../data/portfolioData";
 
 export default function About() {
   return (
@@ -14,35 +14,6 @@ export default function About() {
             {aboutData.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-          </div>
-
-          <div className="skills-single-card" style={{ marginTop: "var(--space-xl)", maxWidth: "620px", padding: "var(--space-lg) var(--space-xl)" }}>
-            <ul className="skills-inline-list" style={{ gap: "var(--space-md)" }}>
-              <li className="skills-inline-item">
-                <span className="skills-main-bullet" aria-hidden="true" />
-                <div className="skills-inline-text">
-                  <strong className="skills-category-name">University</strong>
-                  <span className="skills-separator">: </span>
-                  <span className="skills-items-text">{personalInfo.university}</span>
-                </div>
-              </li>
-              <li className="skills-inline-item">
-                <span className="skills-main-bullet" aria-hidden="true" />
-                <div className="skills-inline-text">
-                  <strong className="skills-category-name">Program</strong>
-                  <span className="skills-separator">: </span>
-                  <span className="skills-items-text">B.Tech AI &amp; DS</span>
-                </div>
-              </li>
-              <li className="skills-inline-item">
-                <span className="skills-main-bullet" aria-hidden="true" />
-                <div className="skills-inline-text">
-                  <strong className="skills-category-name">Languages</strong>
-                  <span className="skills-separator">: </span>
-                  <span className="skills-items-text">English, Telugu, Kannada, Hindi</span>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
