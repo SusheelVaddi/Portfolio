@@ -15,16 +15,32 @@ export default function ProjectsAndCertifications() {
               </p>
             </div>
 
-            <div className="projects-list">
-              {projectsData.map((project) => (
-                <article key={project.id} className="project-card">
-                  <div className="project-header">
-                    <span className="project-domain">{project.domain}</span>
-                    <h3 className="project-name">{project.name}</h3>
+            <div className="skills-single-card" style={{ width: "100%", maxWidth: "100%", margin: 0, height: "100%" }}>
+              <div className="projects-combined-list">
+                {projectsData.map((project, index) => (
+                  <div
+                    key={project.id}
+                    className="project-item"
+                    style={
+                      index > 0
+                        ? {
+                            marginTop: "var(--space-lg)",
+                            paddingTop: "var(--space-lg)",
+                            borderTop: "1px solid var(--color-border-light)",
+                          }
+                        : {}
+                    }
+                  >
+                    <div className="project-header" style={{ marginBottom: "var(--space-xs)" }}>
+                      <span className="project-domain">{project.domain}</span>
+                      <h3 className="project-name" style={{ fontSize: "1.1rem" }}>{project.name}</h3>
+                    </div>
+                    <p className="project-description" style={{ fontSize: "0.9rem", marginBottom: 0, lineHeight: "1.6" }}>
+                      {project.description}
+                    </p>
                   </div>
-                  <p className="project-description">{project.description}</p>
-                </article>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
@@ -38,7 +54,7 @@ export default function ProjectsAndCertifications() {
               </p>
             </div>
 
-            <div className="skills-single-card" style={{ width: "100%", maxWidth: "100%", margin: 0 }}>
+            <div className="skills-single-card" style={{ width: "100%", maxWidth: "100%", margin: 0, height: "100%" }}>
               <ul className="skills-inline-list">
                 {certificationsData.map((cert) => (
                   <li key={cert.id} className="skills-inline-item">
