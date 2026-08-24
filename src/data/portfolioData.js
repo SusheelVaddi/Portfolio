@@ -194,22 +194,16 @@ export const certificationsData = [
   },
   {
     id: 3,
-    title: "BugBash – Aayam",
-    issuer: "Newton School of Technology",
+    title: "Hackathons",
+    issuer: "BugBash – Aayam (Newton School of Technology) & Xcelerate 24-Hour Hackathon (Nikshatra E-Summit 2025, BIT)",
     detail: "",
   },
   {
     id: 4,
-    title: "Xcelerate 24-Hour Hackathon",
-    issuer: "Nikshatra E-Summit 2025, Bangalore Institute of Technology",
-    detail: "",
-  },
-  {
-    id: 5,
-    title: "Ignite Full – 42 Hours of Coursework",
+    title: "Ignite Full (42h Coursework)",
     issuer: "Wadhwani Foundation",
     detail:
-      "Ideation, Entrepreneurship, Business modelling, Financial planning, Product development, Market understanding",
+      "Ideation, Entrepreneurship, Financial Planning, Product Development",
   },
 ];
 
