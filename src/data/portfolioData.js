@@ -272,7 +272,6 @@ export const navLinks = [
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "certifications", label: "Certifications" },
-  { id: "learning", label: "Learning" },
   { id: "goals", label: "Goals" },
   { id: "contact", label: "Contact" },
 ];

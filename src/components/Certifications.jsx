@@ -1,5 +1,4 @@
 import { certificationsData } from "../data/portfolioData";
-import { AwardIcon } from "./Icons";
 
 export default function Certifications() {
   return (
@@ -13,17 +12,22 @@ export default function Certifications() {
           </p>
         </div>
 
-        <div className="certifications-grid fade-in">
-          {certificationsData.map((cert) => (
-            <div key={cert.id} className="cert-card">
-              <div className="cert-icon">
-                <AwardIcon />
-              </div>
-              <h3 className="cert-title">{cert.title}</h3>
-              <p className="cert-issuer">{cert.issuer}</p>
-              {cert.detail && <p className="cert-detail">{cert.detail}</p>}
-            </div>
-          ))}
+        <div className="skills-single-card fade-in">
+          <ul className="skills-inline-list">
+            {certificationsData.map((cert) => (
+              <li key={cert.id} className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">{cert.title}</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">
+                    {cert.issuer}
+                    {cert.detail ? ` (${cert.detail})` : ""}
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

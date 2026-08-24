@@ -14,32 +14,51 @@ export default function About() {
             {aboutData.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <p>
-              <strong>Languages:</strong> English · Telugu · Kannada · Hindi
-            </p>
           </div>
 
-          <div className="about-highlights">
-            <div className="about-highlight-item">
-              <div className="about-highlight-icon">🎓</div>
-              <div className="about-highlight-label">University</div>
-              <div className="about-highlight-value">{personalInfo.university.split(",")[0]}</div>
-            </div>
-            <div className="about-highlight-item">
-              <div className="about-highlight-icon">📚</div>
-              <div className="about-highlight-label">Program</div>
-              <div className="about-highlight-value">B.Tech AI &amp; DS</div>
-            </div>
-            <div className="about-highlight-item">
-              <div className="about-highlight-icon">📍</div>
-              <div className="about-highlight-label">Location</div>
-              <div className="about-highlight-value">Bengaluru</div>
-            </div>
-            <div className="about-highlight-item">
-              <div className="about-highlight-icon">🔬</div>
-              <div className="about-highlight-label">Focus</div>
-              <div className="about-highlight-value">AI &amp; Data Science</div>
-            </div>
+          <div className="skills-single-card" style={{ marginTop: "var(--space-xl)" }}>
+            <ul className="skills-inline-list">
+              <li className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">University</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">{personalInfo.university.split(",")[0]}</span>
+                </div>
+              </li>
+              <li className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">Program</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">B.Tech AI &amp; DS</span>
+                </div>
+              </li>
+              <li className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">Location</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">Bengaluru</span>
+                </div>
+              </li>
+              <li className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">Focus</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">AI &amp; Data Science</span>
+                </div>
+              </li>
+              <li className="skills-inline-item">
+                <span className="skills-main-bullet" aria-hidden="true" />
+                <div className="skills-inline-text">
+                  <strong className="skills-category-name">Languages</strong>
+                  <span className="skills-separator">: </span>
+                  <span className="skills-items-text">English, Telugu, Kannada, Hindi</span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
