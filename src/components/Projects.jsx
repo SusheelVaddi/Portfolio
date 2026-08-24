@@ -22,18 +22,6 @@ export default function Projects() {
 
               <p className="project-description">{project.description}</p>
 
-              {/* Features (if available) */}
-              {project.features && (
-                <div style={{ marginBottom: "var(--space-lg)" }}>
-                  <h4 className="project-section-title">Key Features</h4>
-                  <div className="project-tags">
-                    {project.features.map((f, i) => (
-                      <span key={i} className="project-tag">{f}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
             </article>
           ))}
         </div>
