@@ -3,8 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Education from "./components/Education";
-import Skills from "./components/Skills";
-import Tools from "./components/Tools";
+import SkillsAndTools from "./components/SkillsAndTools";
 import ProjectsAndCertifications from "./components/ProjectsAndCertifications";
 import CareerGoals from "./components/CareerGoals";
 
@@ -55,8 +54,7 @@ export default function App() {
         <Hero />
         <About />
         <Education />
-        <Skills />
-        <Tools />
+        <SkillsAndTools />
         <ProjectsAndCertifications />
         <CareerGoals />
 
