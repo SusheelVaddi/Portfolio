@@ -555,7 +555,7 @@ ol {
 /* ---- Education ---- */
 .education-timeline {
   position: relative;
-  max-width: 700px;
+  max-width: 580px;
   margin: 0 auto;
   padding-left: 2rem;
 }
@@ -572,7 +572,7 @@ ol {
 
 .education-item {
   position: relative;
-  padding-bottom: var(--space-2xl);
+  padding-bottom: var(--space-lg);
 }
 
 .education-item:last-child {
@@ -603,7 +603,7 @@ ol {
   background: var(--color-bg-alt);
   border: 1px solid var(--color-border-light);
   border-radius: var(--border-radius-md);
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   transition: box-shadow var(--transition-base);
 }
 
