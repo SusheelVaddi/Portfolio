@@ -34,27 +34,6 @@ export default function Projects() {
                 </div>
               )}
 
-              {/* Technologies */}
-              {project.technologies && (
-                <div style={{ marginBottom: "var(--space-lg)" }}>
-                  <h4 className="project-section-title">Technologies &amp; Components</h4>
-                  <div className="project-tags">
-                    {project.technologies.map((t, i) => (
-                      <span key={i} className="project-tag">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* What I Learned */}
-              <div>
-                <h4 className="project-section-title">What I Learned</h4>
-                <div className="project-learned">
-                  {project.learned.map((l, i) => (
-                    <span key={i} className="project-learned-tag">{l}</span>
-                  ))}
-                </div>
-              </div>
             </article>
           ))}
         </div>
