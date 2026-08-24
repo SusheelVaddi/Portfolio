@@ -5,7 +5,6 @@ import About from "./components/About";
 import Education from "./components/Education";
 import SkillsAndTools from "./components/SkillsAndTools";
 import ProjectsAndCertifications from "./components/ProjectsAndCertifications";
-import CareerGoals from "./components/CareerGoals";
 
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -56,7 +55,6 @@ export default function App() {
         <Education />
         <SkillsAndTools />
         <ProjectsAndCertifications />
-        <CareerGoals />
 
         <Contact />
       </main>
