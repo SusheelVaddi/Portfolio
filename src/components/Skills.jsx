@@ -20,13 +20,14 @@ export default function Skills() {
                 <SkillCategoryIcon icon={category.icon} />
               </div>
               <h3 className="skill-card-title">{category.category}</h3>
-              <div className="skill-tags">
+              <ul className="skill-list">
                 {category.skills.map((skill, j) => (
-                  <span key={j} className="skill-tag">
-                    {skill}
-                  </span>
+                  <li key={j} className="skill-list-item">
+                    <span className="skill-bullet" aria-hidden="true" />
+                    <span>{skill}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
