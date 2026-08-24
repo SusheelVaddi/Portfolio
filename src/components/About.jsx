@@ -16,8 +16,8 @@ export default function About() {
             ))}
           </div>
 
-          <div className="skills-single-card" style={{ marginTop: "var(--space-xl)" }}>
-            <ul className="skills-inline-list">
+          <div className="skills-single-card" style={{ marginTop: "var(--space-xl)", maxWidth: "620px", padding: "var(--space-lg) var(--space-xl)" }}>
+            <ul className="skills-inline-list" style={{ gap: "var(--space-md)" }}>
               <li className="skills-inline-item">
                 <span className="skills-main-bullet" aria-hidden="true" />
                 <div className="skills-inline-text">
