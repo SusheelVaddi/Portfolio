@@ -158,12 +158,12 @@ ol {
 }
 
 .section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl);
 }
 
 .section-label {
@@ -364,10 +364,10 @@ ol {
 
 /* ---- Hero ---- */
 .hero {
-  min-height: 100vh;
+  padding-top: calc(var(--nav-height) + var(--space-2xl));
+  padding-bottom: var(--space-2xl);
   display: flex;
   align-items: center;
-  padding-top: var(--nav-height);
   background: linear-gradient(
     180deg,
     var(--color-bg) 0%,
@@ -426,7 +426,7 @@ ol {
   font-size: 1.05rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
   max-width: 600px;
 }
 
@@ -434,7 +434,7 @@ ol {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
 }
 
 /* Buttons */
