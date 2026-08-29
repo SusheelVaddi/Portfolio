@@ -41,7 +41,7 @@ export const educationData = [
     location: "Ballari",
     education: "1st Standard – 10th Standard",
     board: "ICSE",
-    duration: "2022–2023",
+    duration: "2013–2023",
     current: false,
   },
   {
