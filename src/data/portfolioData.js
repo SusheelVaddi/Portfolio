@@ -140,7 +140,7 @@ export const projectsData = [
   },
   {
     id: 2,
-    name: "MediScan.AI",
+    name: "MediScan AI",
     domain: "AI, Healthcare & Entrepreneurship",
     description:
       "An AI healthcare assistant using OCR and computer vision to analyze medical reports and prescriptions into simplified explanations.",

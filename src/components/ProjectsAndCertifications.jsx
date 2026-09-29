@@ -35,9 +35,27 @@ export default function ProjectsAndCertifications() {
                       <span className="project-domain">{project.domain}</span>
                       <h3 className="project-name" style={{ fontSize: "1.1rem" }}>{project.name}</h3>
                     </div>
-                    <p className="project-description" style={{ fontSize: "0.9rem", marginBottom: 0, lineHeight: "1.6" }}>
+                    <p className="project-description" style={{ fontSize: "0.9rem", marginBottom: "var(--space-xs)", lineHeight: "1.6" }}>
                       {project.description}
                     </p>
+                    {project.technologies && project.technologies.length > 0 && (
+                      <div className="project-tags" style={{ marginBottom: 0, marginTop: "var(--space-xs)" }}>
+                        {project.technologies.map((tech, i) => (
+                          <span key={i} className="project-tag">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {project.features && project.features.length > 0 && (
+                      <div className="project-tags" style={{ marginBottom: 0, marginTop: "var(--space-xs)" }}>
+                        {project.features.map((feature, i) => (
+                          <span key={i} className="project-tag">
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
