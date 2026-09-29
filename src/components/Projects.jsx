@@ -21,6 +21,24 @@ export default function Projects() {
               </div>
 
               <p className="project-description">{project.description}</p>
+              {project.technologies && project.technologies.length > 0 && (
+                <div className="project-tags">
+                  {project.technologies.map((tech, i) => (
+                    <span key={i} className="project-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {project.features && project.features.length > 0 && (
+                <div className="project-tags">
+                  {project.features.map((feature, i) => (
+                    <span key={i} className="project-tag">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              )}
 
             </article>
           ))}
